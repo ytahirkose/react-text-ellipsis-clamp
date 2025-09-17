@@ -1,0 +1,124 @@
+{
+  "name": "react-text-ellipsis-clamp",
+  "version": "1.0.0",
+  "description": "Ultra-lightweight React component (165 bytes gzipped) to clamp multiline text with CSS-only ellipsis. Zero dependencies, TypeScript support, and production-ready performance.",
+  "author": {
+    "name": "Yaşar Tahir Köse",
+    "email": "ytahirkose@gmail.com",
+    "url": "https://github.com/ytahirkose"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ytahirkose/react-text-ellipsis-clamp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ytahirkose/react-text-ellipsis-clamp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ytahirkose/react-text-ellipsis-clamp/issues"
+  },
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@types/jest": "^29.5.0",
+    "bundlesize": "^0.18.1",
+    "jest": "^29.7.0",
+    "tslib": "^2.6.2",
+    "jest-environment-jsdom": "^29.7.0",
+    "rollup": "^4.9.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.4.0"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.min.config.js",
+    "build:legacy": "tsc && node scripts/dual-bundle.cjs",
+    "build:dev": "rollup -c",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "size": "npm run build && npx bundlesize",
+    "size:check": "npm run build && ls -la dist/ && gzip -c dist/index.mjs | wc -c && gzip -c dist/index.cjs | wc -c",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "keywords": [
+    "react",
+    "ellipsis",
+    "line-clamp",
+    "truncate",
+    "multiline",
+    "component",
+    "ui",
+    "text",
+    "clamp",
+    "css",
+    "typescript",
+    "hook",
+    "responsive",
+    "accessibility",
+    "a11y",
+    "text-overflow",
+    "overflow",
+    "hidden",
+    "expandable",
+    "collapsible",
+    "read-more",
+    "show-more",
+    "text-truncation",
+    "line-height",
+    "webkit",
+    "browser",
+    "cross-browser",
+    "mobile",
+    "desktop",
+    "zero-dependencies",
+    "lightweight",
+    "performance",
+    "optimized",
+    "ultra-lightweight",
+    "minimal",
+    "bundle-size",
+    "gzip",
+    "bytes",
+    "fast",
+    "production-ready"
+  ],
+  "bundlesize": [
+    {
+      "path": "./dist/index.mjs",
+      "maxSize": "5.5 kB",
+      "compression": "gzip"
+    },
+    {
+      "path": "./dist/index.cjs",
+      "maxSize": "200 bytes",
+      "compression": "gzip"
+    }
+  ]
+}

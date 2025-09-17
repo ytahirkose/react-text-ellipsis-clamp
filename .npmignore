@@ -1,0 +1,46 @@
+# Source files
+src/
+scripts/
+tsconfig.json
+rollup.config.js
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test files
+__tests__/
+*.test.*
+*.spec.*
+jest.config.*
+vitest.config.*
+.bundlesizerc.json
+
+# Documentation source
+docs/
+examples/
+demo/
+SOCIAL_MEDIA.md
+
+# CI/CD
+.github/
+
+# Development dependencies
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env*
+
+# Build tools
+webpack.config.*
+vite.config.*

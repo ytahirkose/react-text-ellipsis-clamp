@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "path": "./dist/index.mjs",
+      "maxSize": "1.5 kB",
+      "compression": "gzip"
+    },
+    {
+      "path": "./dist/index.cjs",
+      "maxSize": "1.5 kB",
+      "compression": "gzip"
+    }
+  ]
+}

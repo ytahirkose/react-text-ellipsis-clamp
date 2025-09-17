@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Text Ellipsis Clamp - Live Demo</title>
+    <meta name="description" content="Live demo of react-text-ellipsis-clamp - A minimal React component for multiline text truncation with CSS-only line-clamp">
+    <meta name="keywords" content="react, ellipsis, line-clamp, text truncation, multiline, component, demo">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ytahirkose.github.io/react-text-ellipsis-clamp/">
+    <meta property="og:title" content="React Text Ellipsis Clamp - Live Demo">
+    <meta property="og:description" content="Live demo of react-text-ellipsis-clamp - A minimal React component for multiline text truncation">
+    <meta property="og:image" content="https://ytahirkose.github.io/react-text-ellipsis-clamp/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ytahirkose.github.io/react-text-ellipsis-clamp/">
+    <meta property="twitter:title" content="React Text Ellipsis Clamp - Live Demo">
+    <meta property="twitter:description" content="Live demo of react-text-ellipsis-clamp - A minimal React component for multiline text truncation">
+    <meta property="twitter:image" content="https://ytahirkose.github.io/react-text-ellipsis-clamp/og-image.png">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .demo-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .demo-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+        
+        .install-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .install-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 16px;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .badge:hover {
+            background: #5a6fd8;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 React Text Ellipsis Clamp</h1>
+            <p>Ultra-lightweight React component (165 bytes gzipped) for multiline text truncation</p>
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 14px;">📦 165 bytes gzipped</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 14px;">⚡ Zero dependencies</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 14px;">🎯 CSS-only</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 14px;">🔥 Production ready</span>
+            </div>
+        </div>
+        
+        <div id="root"></div>
+        
+        <div class="install-section">
+            <h2>🚀 Get Started</h2>
+            <div class="install-code">npm install react-text-ellipsis-clamp</div>
+            <div class="badges">
+                <a href="https://github.com/ytahirkose/react-text-ellipsis-clamp" class="badge">📚 GitHub</a>
+                <a href="https://www.npmjs.com/package/react-text-ellipsis-clamp" class="badge">📦 NPM</a>
+                <a href="https://github.com/ytahirkose/react-text-ellipsis-clamp/issues" class="badge">🐛 Issues</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Made with ❤️ by <a href="https://github.com/ytahirkose" style="color: white;">Yaşar Tahir Köse</a></p>
+        </div>
+    </div>
+
+    <script type="text/babel">
+        const { useState, useMemo, forwardRef } = React;
+
+        // Ellipsis component
+        const Ellipsis = forwardRef((props, ref) => {
+            const {
+                maxLines = 2,
+                expandable = false,
+                as = "div",
+                style,
+                children,
+                ...rest
+            } = props;
+
+            const [expanded, setExpanded] = useState(false);
+            const Tag = as;
+
+            const clampStyle = useMemo(() => {
+                if (expanded) return style || {};
+                return {
+                    display: "-webkit-box",
+                    WebkitLineClamp: maxLines,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    ...(style || {})
+                };
+            }, [expanded, maxLines, style]);
+
+            return React.createElement(Tag, {
+                ref: ref,
+                style: clampStyle,
+                ...rest
+            }, [
+                children,
+                expandable && React.createElement('button', {
+                    key: 'toggle',
+                    type: "button",
+                    onClick: () => setExpanded((v) => !v),
+                    'aria-expanded': expanded,
+                    style: {
+                        background: "none",
+                        border: "none",
+                        padding: 0,
+                        margin: "0 0 0 .25rem",
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                        font: "inherit",
+                        color: "#667eea"
+                    }
+                }, expanded ? "Show less" : "Show more")
+            ]);
+        });
+
+        Ellipsis.displayName = "Ellipsis";
+
+        const App = () => {
+            const longText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.`;
+
+            return React.createElement('div', { className: 'demo-grid' }, [
+                React.createElement('div', { key: 'basic', className: 'demo-card' },
+                    React.createElement('h3', null, 'Basic Usage (2 lines)'),
+                    React.createElement('div', { className: 'demo-content' },
+                        React.createElement(Ellipsis, { maxLines: 2 }, longText)
+                    ),
+                    React.createElement('div', { className: 'code-block' }, 
+                        `<Ellipsis maxLines={2}>
+  {longText}
+</Ellipsis>`
+                    )
+                ),
+                
+                React.createElement('div', { key: 'expandable', className: 'demo-card' },
+                    React.createElement('h3', null, 'Expandable (3 lines)'),
+                    React.createElement('div', { className: 'demo-content' },
+                        React.createElement(Ellipsis, { maxLines: 3, expandable: true }, longText)
+                    ),
+                    React.createElement('div', { className: 'code-block' }, 
+                        `<Ellipsis maxLines={3} expandable>
+  {longText}
+</Ellipsis>`
+                    )
+                ),
+                
+                React.createElement('div', { key: 'paragraph', className: 'demo-card' },
+                    React.createElement('h3', null, 'As Paragraph Element'),
+                    React.createElement('div', { className: 'demo-content' },
+                        React.createElement(Ellipsis, { as: 'p', maxLines: 2 }, longText)
+                    ),
+                    React.createElement('div', { className: 'code-block' }, 
+                        `<Ellipsis as="p" maxLines={2}>
+  {longText}
+</Ellipsis>`
+                    )
+                ),
+                
+                React.createElement('div', { key: 'custom', className: 'demo-card' },
+                    React.createElement('h3', null, 'Custom Styling'),
+                    React.createElement('div', { className: 'demo-content' },
+                        React.createElement(Ellipsis, { 
+                            maxLines: 2, 
+                            style: { color: '#e74c3c', fontSize: '18px', fontWeight: 'bold' } 
+                        }, longText)
+                    ),
+                    React.createElement('div', { className: 'code-block' }, 
+                        `<Ellipsis 
+  maxLines={2} 
+  style={{ 
+    color: '#e74c3c', 
+    fontSize: '18px',
+    fontWeight: 'bold'
+  }}
+>
+  {longText}
+</Ellipsis>`
+                    )
+                )
+            ]);
+        };
+
+        ReactDOM.render(React.createElement(App), document.getElementById('root'));
+    </script>
+</body>
+</html>
